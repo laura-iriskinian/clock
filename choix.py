@@ -1,32 +1,32 @@
 from datetime import datetime, timedelta
 import time
 
-# Demander le format d'heure à l'utilisateur
-hour_format = input("Choisissez le format d'heure : 12h ou 24h ? (Entrez 12 ou 24) : ")
+# ask the time format
+hour_format = input("What time format xould you want? \n12h: type '12'\n24h: type '24' \nYour choice: ")
 
-# Vérification du format
+# format check
 if hour_format not in ["12", "24"]:
-    print("Format invalide. Par défaut, le format 24h sera utilisé.")
+    print("Wrong format. The time will be set on 24h")
     hour_format = "24"
 
-# Définir le format d'affichage en fonction du choix
+# Define print format
 if hour_format == "12":
-    time_format = "%I:%M:%S %p"  # Format 12h avec AM/PM
+    time_format = "%I:%M:%S %p"  # Format 12h with AM/PM
 else:
     time_format = "%H:%M:%S"  # Format 24h
 
-#Saisie de l'alarme
-set_time = input("Que souhaitez-vous faire ? : Afficher l'heure (H), régler l'heure (R) ou mettre une alarme (A) ?")
+#alarm choice
+set_time = input("What would you like to do? \nPrint time (P) \nSet time (T) \nSet alarm (A) \nMake your choice: ")
 
 #Boucle de l'affichage de l'heure
-if set_time == "H":
+if set_time == "P":
     while True :
         now = datetime.now()
         current_time = now.strftime(time_format)
         print(f'\r{current_time}', end="\r")
         time.sleep(1)
         
-elif set_time == "R":
+elif set_time == "T":
     new_time_input = (input(f"saisissez l'heure au format HH:MM:SS :"))
     try:
         # Convertir l'entrée utilisateur en un objet datetime
