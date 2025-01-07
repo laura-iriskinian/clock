@@ -21,7 +21,7 @@ def main():
         if set_time == "T":
             new_time_input = (input(f"set the time in format: 'HH:MM:SS': "))
             try:
-                # Convertir l'entrée utilisateur en un objet datetime
+                # Convert user input into datetime obect
                 new_time = datetime.strptime(new_time_input, "%H:%M:%S")
             except ValueError:
                 print("Wrong format! Make sure to use: 'HH:MM:SS'! ")
