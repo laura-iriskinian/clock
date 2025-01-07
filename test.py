@@ -1,10 +1,12 @@
 from datetime import datetime, timedelta
 import time
 import keyboard 
+import playsound
+
 
 def main():
     # Demander le format d'heure à l'utilisateur
-    hour_format = input("\nChoisissez le format d'heure: \n12h: '12' \n24h: '24' ")
+    hour_format = input("\nChoisissez le format d'heure: \n12h: '12' \n24h: '24'\n ")
 
     # Vérification du format
     if hour_format not in ["12", "24"]:
@@ -72,30 +74,15 @@ def main():
         # Définir une alarme
     try:
         if set_time == "A":
-            alarm = input("Saisissez l'heure à laquelle l'alarme doit sonner au format HH:MM:SS : ")
-            try:
-                alarm_time = datetime.strptime(alarm, "%H:%M:%S").time()
-            except ValueError:
-                print("Format invalide. Assurez-vous d'utiliser HH:MM:SS.")
-                exit()
-
-            print("Appuyez sur 'p' pour mettre en pause ou reprendre.")
-            while True:
-                if not paused:  # Si l'horloge n'est pas en pause
-                    now = datetime.now()
-                    current_time = now.strftime(time_format)
-                    print(f'\r{current_time}', end="")
-                    if now.time() == alarm_time:
-                        print("\nL'alarme a sonné !")
-                        break
+            alarm = input("Set the alarm in format: 'HH:MM:SS': ")
+            while True : 
+                now = datetime.now()
+                current_time = now.strftime('%H:%M:%S')
                 time.sleep(1)
-
-                # Vérifier si la touche 'p' est pressée
-                if keyboard.is_pressed('p'):
-                    toggle_pause()
-
-        else:
-            print("Choix invalide.")
-    except KeyboardInterrupt:
+                print(f'\r{current_time}', end="\r")
+                if current_time == alarm:
+                    playsound.playsound("3046.mp3")
+                    print("\n The alarm rang !")
+    except KeyboardInterrupt: 
         main()
 print(main())
