@@ -13,7 +13,7 @@ def main():
                 current_time = now.strftime('%H:%M:%S')
                 time.sleep(1)
 
-                print(f'\r{current_time}', end="\r")
+            
     except KeyboardInterrupt: #Ctrl+C to go back to the main loop
         main()
 
