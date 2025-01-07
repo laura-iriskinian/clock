@@ -1,8 +1,9 @@
 from datetime import datetime, timedelta
 import time
+import keyboard
 
 # ask the time format
-hour_format = input("What time format xould you want? \n12h: type '12'\n24h: type '24' \nYour choice: ")
+hour_format = input("What time format would you want? \n12h: type '12'\n24h: type '24' \nYour choice: ")
 
 # format check
 if hour_format not in ["12", "24"]:
